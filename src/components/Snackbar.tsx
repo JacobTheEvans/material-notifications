@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { CSSTransition } from 'react-transition-group'
 
 export enum Type {
   alert = 'alert',
@@ -14,6 +15,7 @@ interface IProps {
 }
 
 const Container = styled.div`
+  margin: 10px 0px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -33,6 +35,25 @@ const Container = styled.div`
   @media (min-width: 960px) {
     width: 300px;
     border-radius: 4px;
+  }
+  // enter from
+  &.fade-enter {
+    opacity: 0;
+  }
+
+  // enter to
+  &.fade-enter-active {
+    opacity: 1;
+  }
+
+  // exit from
+  &.fade-exit {
+    opacity: 1;
+  }
+
+  // exit to
+  &.fade-exit-active {
+    opacity: 0;
   }
 `
 
@@ -62,16 +83,25 @@ const Snackbar: React.FunctionComponent<IProps> = ({
   type
 }) => {
   return (
-    <Container
-      type={type}
+    <CSSTransition
+      in={true}
+      classNames='fade'
+      timeout={300}
+      unmountOnExit
     >
-      <Message>
-        {message}
-      </Message>
-      <Exit>
-        X
-      </Exit>
-    </Container>
+      {() => (
+        <Container
+          type={type}
+        >
+          <Message>
+            {message}
+          </Message>
+          <Exit>
+            X
+          </Exit>
+        </Container>
+      )}
+    </CSSTransition>
   )
 }
 

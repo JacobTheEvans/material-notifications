@@ -41,10 +41,11 @@ import {
 
 Use Component
 ```jsx
-<SnackbarContainer>
+<SnackbarContainer
+  position={'bottomLeft'}
+>
   <Snackbar
     message={'Your Message!'}
-    position={'bottomLeft'}
     type={'info'}
     onFinished={() => console.log('Callback for when the component is complete')}
   />

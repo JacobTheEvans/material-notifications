@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Snackbar, { Type } from './components/Snackbar'
+import SnackbarContainer, { Position } from './components/SnackbarContainer'
 
 const App: React.FunctionComponent = () => {
   return (
-    <div>
+    <SnackbarContainer position={Position.bottomLeft}>
       <Snackbar
         message='Test Message a very very long text message with stuff and things and other things'
         type={Type.plain}
@@ -25,7 +26,7 @@ const App: React.FunctionComponent = () => {
         message='Normal info message'
         type={Type.info}
       />
-    </div>
+    </SnackbarContainer>
   )
 }
 
