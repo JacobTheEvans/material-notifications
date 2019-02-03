@@ -14,7 +14,6 @@ interface IProps {
 }
 
 const Container = styled.div`
-  z-index: 1400;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +21,7 @@ const Container = styled.div`
   position: fixed;
   width: 95%;
   margin: auto;
+  z-index: -1;
   ${({ position }: { position: Position }): string => {
     switch (position) {
       case Position.bottomRight:

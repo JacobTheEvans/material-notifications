@@ -1,6 +1,6 @@
 {
   "name": "material-notifications",
-  "version": "1.0.0",
+  "version": "0.7.9",
   "description": "Notify users following the Google Material philosophy",
   "repository": "https://github.com/JacobTheEvans/material-notifications",
   "author": "Jacob 'The' Evans",
@@ -21,11 +21,10 @@
     "@babel/preset-env": "7.2.3",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.1.0",
-    "babel-loader": "8.0.5",
+    "babel-loader": "8.0.4",
     "fork-ts-checker-webpack-plugin": "0.5.2",
-    "react-dom": "^16.7.0",
     "typescript": "3.2.2",
-    "webpack": "4.28.3",
+    "webpack": "4.19.1",
     "webpack-cli": "3.2.0"
   },
   "resolutions": {
@@ -37,6 +36,7 @@
     "@types/react-transition-group": "^2.0.15",
     "@types/styled-components": "^4.1.6",
     "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "react-transition-group": "^2.5.3",
     "styled-components": "^4.1.3"
   }

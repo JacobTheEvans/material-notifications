@@ -1,4 +1,5 @@
-export { snackbar } from './utils/MaterialControl';
-export { default as Snackbar } from './components/Snackbar';
-export { default as SnackbarContainer } from './components/SnackbarContainer';
-export { default as SnackbarControlled } from './components/SnackbarControlled';
+import { snackbar } from './utils/MaterialControl';
+import Snackbar from './components/Snackbar';
+import SnackbarContainer from './components/SnackbarContainer';
+import SnackbarControlled from './components/SnackbarControlled';
+export { snackbar, Snackbar, SnackbarContainer, SnackbarControlled };

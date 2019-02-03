@@ -6,7 +6,9 @@ module.exports = {
 
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    library: 'material-notifications',
+    libraryTarget: 'commonjs2'
   },
 
   resolve: {
@@ -14,7 +16,14 @@ module.exports = {
   },
 
   module: {
-    rules: [{ test: /\.(ts|js)x?$/, loader: 'babel-loader', exclude: /node_modules/ }]
+    rules: [{
+      test: /\.(ts|js)x?$/,
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env', '@babel/react']
+      },
+      exclude: /node_modules/
+    }]
   },
 
   plugins: [

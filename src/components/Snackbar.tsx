@@ -21,6 +21,7 @@ interface IState {
 }
 
 const Container = styled.div`
+  z-index: 1400;
   margin: 10px 0px;
   box-sizing: border-box;
   display: flex;
