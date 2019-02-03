@@ -26,7 +26,7 @@ import {
 ```
 Call function
 ```javascript
-snackbar('Your message!', 'bottomLeft' 'info')
+snackbar('Your message!', 'bottomLeft' 'info', 2000)
 ```
 
 Import React Components

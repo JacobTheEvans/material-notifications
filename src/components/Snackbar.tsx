@@ -88,19 +88,19 @@ const Exit = styled.div`
 
 class Snackbar extends React.Component<IProps, IState> {
   state: IState = {
-    isActive: false
+    isActive: true
   }
 
   componentDidMount () {
     const { timeout } = this.props
-    setTimeout(this.toggleActive, timeout)
+    setTimeout(this.exit, timeout)
   }
 
-  toggleActive = (): void => {
+  exit = (): void => {
     const { onExit } = this.props
-    this.setState(({ isActive }) => ({
-      isActive: !isActive
-    }), (): void => { onExit })
+    this.setState({
+      isActive: false
+    }, (): void => { setTimeout(onExit, 800) })
   }
 
   render() {
@@ -121,7 +121,7 @@ class Snackbar extends React.Component<IProps, IState> {
               {message}
             </Message>
             <Exit
-              onClick={this.toggleActive}
+              onClick={this.exit}
             >
               X
             </Exit>

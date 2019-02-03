@@ -17,7 +17,7 @@ interface IState {
 declare class Snackbar extends React.Component<IProps, IState> {
     state: IState;
     componentDidMount(): void;
-    toggleActive: () => void;
+    exit: () => void;
     render(): JSX.Element;
 }
 export default Snackbar;
