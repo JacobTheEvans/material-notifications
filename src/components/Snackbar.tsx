@@ -26,6 +26,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   padding: 10px;
+  width: 100%;
   background-color: ${({ type }: { type: Type }): string => {
     switch (type) {
       case Type.alert:

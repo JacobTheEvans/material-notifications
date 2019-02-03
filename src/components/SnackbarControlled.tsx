@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component, Fragment} from 'react'
 import Snackbar, { Type } from '../components/Snackbar'
 import SnackbarContainer, { Position } from '../components/SnackbarContainer'
 
@@ -16,7 +16,7 @@ interface IState {
   topLeft: Notification[]
 }
 
-class SnackbarControlled extends React.Component<{}, IState> {
+class SnackbarControlled extends Component<{}, IState> {
   state: IState = {
     bottomRight: [] as Notification[],
     bottomLeft: [] as Notification[],
@@ -86,7 +86,7 @@ class SnackbarControlled extends React.Component<{}, IState> {
       topLeft
     } = this.state
     return (
-      <div>
+      <Fragment>
         {Boolean(bottomLeft.length) && (
           <SnackbarContainer
             position={Position.bottomLeft}
@@ -151,7 +151,7 @@ class SnackbarControlled extends React.Component<{}, IState> {
             ))}
           </SnackbarContainer>
         )}
-      </div>
+      </Fragment>
     )
   }
 }

@@ -20,6 +20,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   position: fixed;
+  width: 95%;
+  margin: auto;
   ${({ position }: { position: Position }): string => {
     switch (position) {
       case Position.bottomRight:
@@ -54,6 +56,9 @@ const Container = styled.div`
         `
     }
   }}
+  @media (min-width: 960px) {
+    width: 300px;
+  }
 `
 
 const SnackbarContainer: React.FunctionComponent<IProps> = ({

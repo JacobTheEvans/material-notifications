@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { Type } from '../components/Snackbar';
 import { Position } from '../components/SnackbarContainer';
 export interface Notification {
@@ -13,7 +13,7 @@ interface IState {
     topRight: Notification[];
     topLeft: Notification[];
 }
-declare class SnackbarControlled extends React.Component<{}, IState> {
+declare class SnackbarControlled extends Component<{}, IState> {
     state: IState;
     add: (notification: Notification) => void;
     remove: (position: Position, index: number) => void;
