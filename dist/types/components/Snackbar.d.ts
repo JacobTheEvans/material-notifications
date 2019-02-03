@@ -8,6 +8,16 @@ export declare enum Type {
 interface IProps {
     message: string;
     type: Type;
+    onExit: Function;
+    timeout: number;
 }
-declare const Snackbar: React.FunctionComponent<IProps>;
+interface IState {
+    isActive: boolean;
+}
+declare class Snackbar extends React.Component<IProps, IState> {
+    state: IState;
+    componentDidMount(): void;
+    toggleActive: () => void;
+    render(): JSX.Element;
+}
 export default Snackbar;

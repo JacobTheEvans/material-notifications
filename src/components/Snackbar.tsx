@@ -12,6 +12,12 @@ export enum Type {
 interface IProps {
   message: string,
   type: Type,
+  onExit: Function,
+  timeout: number
+}
+
+interface IState {
+  isActive: boolean
 }
 
 const Container = styled.div`
@@ -36,24 +42,26 @@ const Container = styled.div`
     width: 300px;
     border-radius: 4px;
   }
-  // enter from
   &.fade-enter {
-    opacity: 0;
+    opacity: 0.01;
+    transform: scale(0.9) translateY(50%);
   }
 
-  // enter to
   &.fade-enter-active {
     opacity: 1;
+    transform: scale(1) translateY(0%);
+    transition: all 300ms ease-out;
   }
 
-  // exit from
   &.fade-exit {
     opacity: 1;
+    transform: scale(1) translateY(0%);
   }
 
-  // exit to
   &.fade-exit-active {
-    opacity: 0;
+    opacity: 0.01;
+    transform: scale(0.9) translateY(50%);
+    transition: all 300ms ease-out;
   }
 `
 
@@ -78,31 +86,50 @@ const Exit = styled.div`
   }
 `
 
-const Snackbar: React.FunctionComponent<IProps> = ({
-  message = '',
-  type
-}) => {
-  return (
-    <CSSTransition
-      in={true}
-      classNames='fade'
-      timeout={300}
-      unmountOnExit
-    >
-      {() => (
-        <Container
-          type={type}
-        >
-          <Message>
-            {message}
-          </Message>
-          <Exit>
-            X
-          </Exit>
-        </Container>
-      )}
-    </CSSTransition>
-  )
+class Snackbar extends React.Component<IProps, IState> {
+  state: IState = {
+    isActive: false
+  }
+
+  componentDidMount () {
+    const { timeout } = this.props
+    setTimeout(this.toggleActive, timeout)
+  }
+
+  toggleActive = (): void => {
+    const { onExit } = this.props
+    this.setState(({ isActive }) => ({
+      isActive: !isActive
+    }), (): void => { onExit })
+  }
+
+  render() {
+    const { isActive } = this.state
+    const { message, type } = this.props
+    return (
+      <CSSTransition
+        in={isActive}
+        classNames='fade'
+        timeout={300}
+        unmountOnExit
+      >
+        {() => (
+          <Container
+            type={type}
+          >
+            <Message>
+              {message}
+            </Message>
+            <Exit
+              onClick={this.toggleActive}
+            >
+              X
+            </Exit>
+          </Container>
+        )}
+      </CSSTransition>
+    )
+  }
 }
 
 export default Snackbar
