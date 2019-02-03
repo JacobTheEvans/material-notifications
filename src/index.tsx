@@ -1,29 +1,14 @@
-import * as React  from 'react'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Snackbar from './components/Snackbar'
 
-type State = {
-  counter: number
+const App: React.FunctionComponent = () => {
+  return (
+    <Snackbar
+      message='Test Message'
+      type={0}
+    />
+  )
 }
 
-export class Test extends React.Component<{}, State> {
-  state: State = {
-    counter: 0
-  }
-
-  handleClick = (): void => {
-    this.setState((
-      { counter }: { counter: number }
-      ) => ({
-      counter: counter + 1
-    }))
-  }
-
-  render () {
-    const { counter }: { counter: number } = this.state
-    return (
-      <p>
-        {counter}
-        <button onClick={this.handleClick}>Add</button>
-      </p>
-    )
-  }
-}
+ReactDOM.render(<App />, document.getElementById('root'))
