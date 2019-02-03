@@ -1,17 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-// enum Position {
-  // topLeft,
-  // topRight,
-  // bottomLeft,
-  // bottomRight
-// }
-
-enum Type {
-  alert,
-  info,
-  warning
+export enum Type {
+  alert = 'alert',
+  info = 'info',
+  warning = 'warning',
+  plain = 'plain'
 }
 
 interface IProps {
@@ -20,33 +14,52 @@ interface IProps {
 }
 
 const Container = styled.div`
-  width: 250px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
-  padding: 0px 0.3rem;
-  background-color: ${({ type = 0 }: { type: Type }): string => {
+  padding: 10px;
+  background-color: ${({ type }: { type: Type }): string => {
     switch (type) {
       case Type.alert:
-        return '#f44336'
+        return '#d32f2f'
       case Type.info:
-        return '#03a9f4'
+        return '#2979ff'
       case Type.warning:
-        return '#ffb300'
+        return '#ffa000'
       default:
-        return '#546e7a'
+        return '#313131'
     }
   }}
+  @media (min-width: 960px) {
+    width: 300px;
+    border-radius: 4px;
+  }
 `
 
-const Message = styled.p`
+const Message = styled.span`
   font-size: 0.875rem;
   line-height: 1.46429em;
-  color: white;
+  color: #fff;
+  flex-grow: 1;
+  overflow-wrap: break-word;
+`
+const Exit = styled.div`
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.46429em;
+  color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 50ms ease 50ms;
+  &:hover {
+    color: #fff;
+  }
 `
 
 const Snackbar: React.FunctionComponent<IProps> = ({
   message = '',
-  type = 0
+  type
 }) => {
   return (
     <Container
@@ -55,6 +68,9 @@ const Snackbar: React.FunctionComponent<IProps> = ({
       <Message>
         {message}
       </Message>
+      <Exit>
+        X
+      </Exit>
     </Container>
   )
 }

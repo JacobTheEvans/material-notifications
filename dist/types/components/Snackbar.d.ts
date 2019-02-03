@@ -1,8 +1,9 @@
 import React from 'react';
-declare enum Type {
-    alert = 0,
-    info = 1,
-    warning = 2
+export declare enum Type {
+    alert = "alert",
+    info = "info",
+    warning = "warning",
+    plain = "plain"
 }
 interface IProps {
     message: string;
