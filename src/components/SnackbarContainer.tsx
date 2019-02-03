@@ -14,6 +14,7 @@ interface IProps {
 }
 
 const Container = styled.div`
+  z-index: 1400;
   height: 100vh;
   display: flex;
   flex-direction: column;

@@ -8,12 +8,15 @@ export interface Notification {
     timeout: number;
 }
 interface IState {
-    notifications: Notification[];
+    bottomRight: Notification[];
+    bottomLeft: Notification[];
+    topRight: Notification[];
+    topLeft: Notification[];
 }
 declare class SnackbarControlled extends React.Component<{}, IState> {
     state: IState;
     add: (notification: Notification) => void;
-    remove: (index: number) => void;
+    remove: (position: Position, index: number) => void;
     render(): JSX.Element;
 }
 export default SnackbarControlled;

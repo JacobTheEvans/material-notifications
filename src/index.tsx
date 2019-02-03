@@ -11,14 +11,14 @@ snackbar({
 
 snackbar({
   message: 'Test Message',
-  position: Position.bottomLeft,
+  position: Position.bottomRight,
   type: Type.info,
   timeout: 4000
 })
 
 snackbar({
   message: 'Test Message',
-  position: Position.bottomLeft,
+  position: Position.topLeft,
   type: Type.info,
   timeout: 7000
 })
